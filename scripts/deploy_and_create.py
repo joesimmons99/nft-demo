@@ -13,6 +13,7 @@ def main():
         f"Awesome, you can view yoru NFT at: {OPENSEA_URL.format(simple_collectible.address, simple_collectible.tokenCounter() -1)}"
     )
     print("Please wait up to 20 minutes for the token to be indexed by OpenSea and then hit the refresh metadata button.")
+    return(simple_collectible)
 
 
 
