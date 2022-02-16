@@ -20,4 +20,10 @@ def main():
             print(f"Creating metadata file {metadata_file_name}")
             collectible_metadata["name"] = breed
             collectible_metadata["description"] = f"An adorable {breed} pup!"
-            print(collectible_metadata)
+            image_path = "./img/" + breed.lower().replace("_", "-") + ".png"
+            # image_uri = upload_to_ipfs()
+            # collectible_metadata["image"] = image_uri
+
+def upload_to_ipfs():
+    with Path(filepath).open("rb") as fp: # Open the file 'filepath' in binary mode. We want to open it in binary mode because we want to read the bytes of the file.
+        image_binary = fp.read() # Read the contents of the file into a string
