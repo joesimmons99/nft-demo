@@ -2,6 +2,7 @@ from brownie import AdvancedCollectible, network
 from scripts.helpful_scripts import get_breed
 from metadata.sample_metadata import metadata_template
 from pathlib import Path
+import json
 
 def main():
     advanced_collectible = AdvancedCollectible[-1]
@@ -21,8 +22,9 @@ def main():
             collectible_metadata["name"] = breed
             collectible_metadata["description"] = f"An adorable {breed} pup!"
             image_path = "./img/" + breed.lower().replace("_", "-") + ".png"
-            # image_uri = upload_to_ipfs()
-            # collectible_metadata["image"] = image_uri
+            collectible_metadata["image"] = image_uri
+            with open(metadata_file_name, "w") as file:
+                json.dump(collectible_metadata, file)
 
 def upload_to_ipfs():
     with Path(filepath).open("rb") as fp: # Open the file 'filepath' in binary mode. We want to open it in binary mode because we want to read the bytes of the file.
